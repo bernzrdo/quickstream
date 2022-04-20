@@ -1,0 +1,164 @@
+
+html, body {height: 100%}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ----- HEADER ----- */
+
+header {
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    
+    padding: 0 25px;
+    height: calc(1.2em + 60px);
+    width: calc(100% - 50px);
+    font-size: 1.5em;
+    
+    transition: font-size .3s, height .3s;
+}
+header.small {
+    font-size: 1em;
+    height: calc(1.2em + 20px);
+}
+
+header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-space {height: calc(1.2em + 60px)}
+
+/* ----- ALBUM ----- */
+
+.album {
+    display: flex;
+    gap: 25px;
+
+    padding: 25px;
+}
+
+/* ----- INFO ----- */
+
+.info {
+    width: 300px;
+}
+
+.info img {
+    width: 100%;
+}
+
+.info .title-explicit {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.info .title {
+    font-weight: bold;
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info .title-explicit i {
+    opacity: .5;
+}
+
+.info .artist-genre-year {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.progress {
+    height: 5px;
+    margin-top: 5px;
+}
+
+.progress .bar {
+    height: 100%;
+    width: 0;
+}
+
+/* ----- BUTTONS ----- */
+
+.buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+button {
+    flex-grow: 1;
+    flex-basis: 0;
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    border: 0;
+    padding: 3px 15px;
+    cursor: pointer;
+}
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* ----- TRACKS ----- */
+
+.tracks {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.track .play-icon,
+.track .number {
+    width: 25px;
+    text-align: right;
+}
+
+.track .play-icon {display: none}
+.track.playing .play-icon {display: block}
+
+.track .number {opacity: .5}
+.track.playing .number {display: none}
+
+.track .explicit {
+    font-size: .8em;
+    opacity: .5;
+}
+
+@media (max-width: 1000px) {
+
+    header {
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .album {
+        flex-direction: column;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+}

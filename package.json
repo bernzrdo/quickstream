@@ -1,0 +1,25 @@
+{
+  "name": "quick-stream",
+  "version": "1.0.0",
+  "description": "Listen to 10 seconds of each song in an album.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec \"heroku local\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernzrdo/quickstream.git"
+  },
+  "author": "bernzrdo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bernzrdo/quickstream/issues"
+  },
+  "homepage": "https://quickstream.bernzrdo.wtf/",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "get-image-colors": "^1.1.1"
+  }
+}

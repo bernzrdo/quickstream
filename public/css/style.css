@@ -1,0 +1,194 @@
+
+html, body {height: 100%}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+
+    header {
+        background-color: #000 !important;
+    }
+    header.simple {
+        background-color: #111 !important;
+    }
+
+    .search {
+        background-color: #111 !important;
+        color: #fff;
+    }
+    header.simple .search {
+        background-color: #222 !important;
+    }
+
+    .message {
+        color: #555 !important;
+    }
+
+    .album:hover {
+        background-color: #111 !important;
+    }
+
+    .album .art {
+        background-color: #222 !important;
+        color: #333 !important;
+    }
+
+}
+
+/* ------ HEADER ------ */
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    position: relative;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 25px #0001;
+
+    transition: height .5s, gap .5s, background-color .5s;
+}
+header.simple {
+    gap: 0;
+    height: calc(1.2em + 60px);
+}
+
+.logo {
+    font-size: 3em;
+    color: #09c;
+    transition: font-size .5s, opacity .5s;
+}
+header.simple .logo {
+    font-size: 0;
+    opacity: 0;
+}
+
+.floating-logo {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+
+    color: #09c;
+
+    opacity: 0;
+    font-size: 0;
+    transition: font-size .5s, opacity .5s;
+}
+header.simple .floating-logo {
+    opacity: 1;
+    font-size: 1.5em;
+}
+
+.search {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eee;
+    border: 0;
+    padding: 10px 25px;
+    width: 500px;
+    max-width: calc(100% - 80px);
+    font-size: 1.2em;
+    border-radius: 0;
+    transition: background-color .5s;
+}
+.search:focus {outline: none}
+
+/* ------ RESULTS ------ */
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+
+    padding: 0 25px;
+    height: 0;
+    overflow: auto;
+    transition: height .5s, padding .5s;
+}
+header.simple + .results {
+    padding: 25px;
+    height: calc(100% - 1.2em - 110px);
+}
+
+.message {color: #888}
+.message.error {color: #f55}
+
+.album {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    width: 530px;
+    padding: 10px;
+    max-width: 100%;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+.album:hover {background-color: #eee}
+
+.album .art {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    width: 50px;
+    height: 50px;
+
+    font-size: 30px;
+    color: #aaa;
+    background-color: #ddd;
+
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+
+    transition: background-image 5s;
+}
+
+.album .info {
+    min-width: 0;
+}
+
+.album .title-explicit {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.album .title {
+    font-size: 1.2em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.album .title-explicit i {
+    color: #aaa;
+    font-size: .8em;
+}
+
+.album .artist-year {
+    font-size: .9em;
+    color: #888;
+}
+
+@media (max-width: 1000px) {
+
+    .floating-logo {display: none}
+
+}

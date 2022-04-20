@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%= album.title %> - <%= album.artist %> | QuickStream</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="<%= album.title %>">
+        <meta name="description" content="<%= album.artist %>">
+        <meta name="theme-color" content="<%= album.colors[1] %>">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://quickstream.bernzrdo.wtf/<%= album.id %>">
+        <meta property="og:title" content="<%= album.title %>">
+        <meta property="og:description" content="<%= album.artist %>">
+        <meta property="og:image" content="<%= album.art %>">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary">
+        <meta property="twitter:url" content="https://quickstream.bernzrdo.wtf/<%= album.id %>">
+        <meta property="twitter:title" content="<%= album.title %>">
+        <meta property="twitter:description" content="<%= album.artist %>">
+        <meta property="twitter:image" content="<%= album.art %>">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
+
+        <link rel="stylesheet" href="/css/album.css">
+    </head>
+    <body>
+
+        <header>
+            <a href="/">QuickStream</a>
+        </header>
+        <div class="header-space"></div>
+        <div class="album">
+            <div class="info">
+                <img src="<%= album.art %>" alt="<%= album.title %> Album Art">
+                <div class="title-explicit">
+                    <div class="title" title="<%= album.title %>"><%= album.title %></div>
+                    <% if(album.explicit){ %>
+                    <i class="bi bi-explicit-fill"></i>
+                    <% } %>
+                </div>
+                <div class="artist-genre-year">
+                    <div><%= album.artist %></div>
+                    <div><%= album.genre %> &middot; <%= album.year %></div>
+                </div>
+                <div class="buttons">
+                    <button class="play-album"><i class="bi bi-play-fill"></i> Play Album</button>
+                    <button class="player prev" style="display: none"><i class="bi bi-skip-start-fill"></i></button>
+                    <button class="player stop" style="display: none"><i class="bi bi-stop-fill"></i></button>
+                    <button class="player next" style="display: none"><i class="bi bi-skip-end-fill"></i></button>
+                </div>
+                <div class="progress" style="display: none">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div class="tracks">
+                <% for(track of tracks){ %>
+                <div class="track">
+                    <div class="play-icon"><i class="bi bi-volume-up-fill"></i></div>
+                    <div class="number"><%= track.number %></div>
+                    <div class="title">
+                        <%= track.title %>
+                        <% if(album.explicit){ %>
+                        <i class="explicit bi bi-explicit-fill"></i>
+                        <% } %>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <style>
+
+            body {
+                background-color: <%= album.colors[0] %>;
+                color: <%= album.colors[1] %>;
+            }
+
+            header, button, .progress .bar, .track:hover, .track.playing {
+                background-color: <%= album.colors[1] %>;
+                color: <%= album.colors[0] %>;
+            }
+            
+            .progress {
+                background-color: <%= album.colors[1] %>55;
+            }
+
+        </style>
+        <script>
+            const audios = [
+                <% for(track of tracks){ %>
+                new Audio('<%= track.audio %>'),
+                <% } %>
+            ];
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/js/album.js"></script>
+        <script src="https://bernzrdo.wtf/penguin.js"></script>
+    </body>
+</html>
