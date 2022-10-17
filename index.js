@@ -6,6 +6,11 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+app.use((req, res, next)=>{
+    console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
+    next();
+});
+
 app.get('/', (req, res)=>res.render('index'));
 
 app.get('/api', (req, res)=>{
@@ -84,4 +89,4 @@ app.get(/^\/[0-9]+$/, (req, res)=>{
 
 });
 
-app.listen(process.env.PORT, ()=>console.log('[HTTP] Ready!'));
+app.listen(1024, ()=>console.log('Ready!'));

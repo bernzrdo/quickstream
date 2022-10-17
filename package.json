@@ -4,7 +4,7 @@
   "description": "Listen to 10 seconds of each song in an album.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec \"heroku local\""
+    "start": "node index"
   },
   "repository": {
     "type": "git",
